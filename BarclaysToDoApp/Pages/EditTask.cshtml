@@ -1,0 +1,21 @@
+﻿@page
+@model BarclaysToDoApp.Pages.EditTaskModel
+@{
+    <h1>Edit Task</h1>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Task Name:</label>
+            <input type="text" id="name" name="Name" class="form-control" required>
+            <label for="priority">Priority:</label>
+            <input type="text" id="name" name="Name" class="form-control" required>
+            <select id="status" name="Status" required>
+                <option value="notstarted">Not started</option>
+                <option value="inprogress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+}

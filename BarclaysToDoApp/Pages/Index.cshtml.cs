@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BarclaysToDoApp.Interfaces;
+using BarclaysToDoApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BarclaysToDoApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ITaskService _taskService;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ITaskService service)
         {
-            _logger = logger;
+            _taskService = service;
         }
+
+        public List<TaskItems> ListOfTasks { get; set; }
 
         public void OnGet()
         {
-
+            ListOfTasks = _taskService.GetTasks();
         }
     }
 }

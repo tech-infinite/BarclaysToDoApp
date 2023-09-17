@@ -1,8 +1,9 @@
-﻿using BarclaysToDoApp.Models;
+﻿using BarclaysToDoApp.Interfaces;
+using BarclaysToDoApp.Models;
 
 namespace BarclaysToDoApp.Services
 {
-    public class TaskServices
+    public class TaskServices : ITaskService
     {
         // Adding in-memory collection to store the tasks
         private List<TaskItems> tasks;
@@ -14,9 +15,15 @@ namespace BarclaysToDoApp.Services
             tasks = new List<TaskItems>();
         }
 
-        public void AddTask(TaskItems task) 
+        public bool AddTask(TaskItems task) 
         {
+            if (hasDuplicateName(task.TaskName))
+            {
+                return false;
+            }
+            
             tasks.Add(task);
+            return true;
         }
 
         // Method to Edit a task by it's ID
@@ -36,6 +43,11 @@ namespace BarclaysToDoApp.Services
             return tasks;
         }
 
+        public TaskItems GetTaskById(int taskID) 
+        {
+            return tasks.FirstOrDefault(task => task.TaskId == taskID);
+        }
+
         public void DeleteTask(int taskID) 
         {
             TaskItems taskToRemove = tasks.FirstOrDefault(t => t.TaskId == taskID);
@@ -44,5 +56,11 @@ namespace BarclaysToDoApp.Services
                 tasks.Remove(taskToRemove);
             }
         }
+
+        private bool hasDuplicateName(string taskName) 
+        {
+            return tasks.Any(task => string.Equals(task.TaskName, taskName, StringComparison.OrdinalIgnoreCase));
+        }
+
     }
 }

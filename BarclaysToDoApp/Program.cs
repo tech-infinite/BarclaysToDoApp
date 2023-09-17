@@ -1,8 +1,15 @@
+using BarclaysToDoApp.Interfaces;
+using BarclaysToDoApp.Services;
+using Microsoft.AspNetCore.Builder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.ConfigureAuthorizationOptions();
+
+builder.Services.AddSingleton<ITaskService, TaskServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,3 +30,5 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
