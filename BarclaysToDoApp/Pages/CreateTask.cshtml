@@ -4,18 +4,22 @@
     <h1>Create Task</h1>
 
     <form method="post">
-        <div class ="form-group1">
+        <div class ="form-group">
             <label for ="name">Task Name:</label>
             <input type="text" id="name" name="Name" class="form-control" required>
+        </div>
+        <div class="form-group">
             <label for="priority">Priority:</label>
-            <input type="number" id="priority" name="Priority" required>
-            <select id="status" name="Status" required>
+            <input type="number" id="priority" name="Priority" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Status" >Status:</label>
+            <select id="Status" name="Status" class="form-control" required>
                 <option value="notstarted">Not started</option>
                 <option value="inprogress">In Progress</option>
                 <option value="completed">Completed</option>
-            </select>
-            
-
+            </select>           
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
