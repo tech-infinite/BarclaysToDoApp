@@ -6,7 +6,7 @@ namespace BarclaysToDoApp.Services
     public class TaskServices : ITaskService
     {
         // Adding in-memory collection to store the tasks
-        private List<TaskItems> tasks = new List<TaskItems>();       
+        private List<TaskItems> tasks;       
         public TaskServices() 
         {
             // To initialize the tasks list here

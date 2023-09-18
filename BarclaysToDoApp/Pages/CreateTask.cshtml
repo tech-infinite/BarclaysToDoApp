@@ -10,7 +10,8 @@
         </div>
         <div class="form-group">
             <label for="priority">Priority:</label>
-            <input type="number" id="priority" name="Priority" class="form-control" required>
+            <input type="number" min="1" max="5" id="priority" name="Priority" class="form-control" required>
+            <span asp-validation-for="Task.Priority" class="text-danger"></span>
         </div>
 
         <div class="form-group">
