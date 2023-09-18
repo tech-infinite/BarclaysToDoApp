@@ -18,7 +18,7 @@ namespace BarclaysToDoApp.Pages
 
         public void OnGet()
         {
-            ListOfTasks = _taskService.GetTasks();
+            ListOfTasks = _taskService.GetTasks();           
         }
     }
 }
